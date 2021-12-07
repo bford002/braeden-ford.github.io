@@ -161,7 +161,7 @@ return (stringOne.length > stringTwo.length) ? stringOne:stringTwo;
  */
 function sortAscending(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
-
+return stringOne - stringTwo;
 
 
     // YOUR CODE ABOVE HERE //
@@ -177,7 +177,7 @@ function sortAscending(stringOne, stringTwo) {
  */
 function sortDescending(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
-
+    return stringTwo.compareTo(stringOne);
 
 
 
