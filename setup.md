@@ -5,7 +5,6 @@
 3) close file and terminal
 4) in terminal, type -- sudo apt-get install subversion
 5) in terminal, type -- npm install -g opspark
-
 6) in terminal, type -- os install
 
 
