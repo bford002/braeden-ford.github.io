@@ -146,7 +146,7 @@ return args.join("");
  */
 function longest(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
-
+return (stringOne.length > stringTwo.length) ? stringOne:stringTwo;
 
 
     // YOUR CODE ABOVE HERE //
