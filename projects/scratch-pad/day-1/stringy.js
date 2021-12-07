@@ -77,8 +77,8 @@ return string.replace(/[" "]/g, "-").toLowerCase();
  */
 function beginsWith(string, char) {
     // YOUR CODE BELOW HERE //
-return true if (string == )
-    
+return string.toLowerCase().startsWith(char.toLowerCase());
+
 
     // YOUR CODE ABOVE HERE //
 }
@@ -98,7 +98,7 @@ return true if (string == )
 function endsWith(string, char) {
     // YOUR CODE BELOW HERE //
 
-
+return string.toLowerCase().endsWith(char.toLowerCase());
 
     // YOUR CODE ABOVE HERE //
 }
