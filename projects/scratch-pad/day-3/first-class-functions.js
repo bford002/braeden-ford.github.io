@@ -49,8 +49,8 @@ function createLessThanFilter(base) {
  */
 function createStartsWithFilter(startsWith) {
     // YOUR CODE BELOW HERE //
-    return function(string) {
-        
+    return function(str) {
+        return str.toLowerCase().startsWith(startsWith.toLowerCase());
     }
     
     
@@ -65,7 +65,9 @@ function createStartsWithFilter(startsWith) {
  */
 function createEndsWithFilter(endsWith) {
     // YOUR CODE BELOW HERE //
-    
+    return function(str) {
+        return str.toLowerCase().endsWith(endsWith.toLowerCase());
+    }
     
     
     
