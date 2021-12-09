@@ -83,10 +83,11 @@ function createEndsWithFilter(endsWith) {
  */
 function modifyStrings(strings, modify) {
     // YOUR CODE BELOW HERE //
-    
-    
-    
-    
+    var outputArr = [];
+    for (var i = 0; i < strings.length; i++) {
+        outputArr.push(modify(strings[i]));
+    }
+    return outputArr;
     // YOUR CODE ABOVE HERE //
 }
 
@@ -101,8 +102,11 @@ function modifyStrings(strings, modify) {
  */
 function allStringsPass(strings, test) {
     // YOUR CODE BELOW HERE //
-    
-    
+    return function() {
+        for(i = 0; i <= strings.length - 1; i++) {
+            return test(strings[i]);
+            }
+    }
     
     
     // YOUR CODE ABOVE HERE //
