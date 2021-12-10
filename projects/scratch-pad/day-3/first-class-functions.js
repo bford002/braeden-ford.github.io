@@ -102,13 +102,7 @@ function modifyStrings(strings, modify) {
  */
 function allStringsPass(strings, test) {
     // YOUR CODE BELOW HERE //
-    return function() {
-        for(i = 0; i <= strings.length - 1; i++) {
-            return test(strings[i]);
-            }
-    }
-    
-    
+    return strings.every(test);
     // YOUR CODE ABOVE HERE //
 }
 
