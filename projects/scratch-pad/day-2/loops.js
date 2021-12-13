@@ -114,12 +114,12 @@ function printObjectValuesInReverse(object) {
 
     var arr = [];
 
-    for (var i = object.length; i > 0; i++) {
-      arr.push(i);
-      for (var key in object) {
-        console.log(object[i]);
+    for (var key in object) {
+      arr.push(object[key]);
     }
-  }
+    for (var i = arr.length - 1; i >= 0; i--) {
+      console.log(arr[i]);
+    }
   // YOUR CODE ABOVE HERE //
 }
 
