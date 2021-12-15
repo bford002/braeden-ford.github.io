@@ -73,15 +73,15 @@ function makeContactList() {
             return contacts.pop(contact);
       },
         printAllContactNames: function() {
+            var fullName = [];
             for (var i = 0; i < contacts.length; i++) {
-                for (var key in contacts[i]) {
-                  return contacts[i].nameFirst.concat(" ", contacts[i].nameLast) + "/n";
+                fullName.push(contacts[i].nameFirst.concat(" ", contacts[i].nameLast));
                 }
+                return fullName.join("\n");
+                
             }
     }
-  }
 }
-
 
 
 
