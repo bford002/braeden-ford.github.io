@@ -14,7 +14,7 @@
 //////////////////////////////////////////////////////////////////////
 function search(animals, name) {
     for (i = 0; i < animals.length; i++) {
-        if (animals[i].name === name || animals[i].key !== null) {
+        if (animals[i].name === name && animals[i] !== "null" && animals[i] !== "undefined") {
             return animals[i];
         } else {
             return null;
