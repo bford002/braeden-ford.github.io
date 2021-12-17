@@ -17,32 +17,53 @@ function search(animals, name) {
         if (animals[i] && animals[i] !== "null" && animals[i] !== "undefined") {
             if (animals[i].name === name) {
             return animals[i];
-            } else {
-                return null;
             }
-        } else {
-            return null;
         }
     }
+    return null;
 }     
 
 
 //////////////////////////////////////////////////////////////////////
 // Step 2 - Replace //////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
-
+function replace(animals, name, replacement) {
+    for (i = 0; i < animals.length; i++) {
+        if (animals[i] && animals[i] !== "null" && animals[i] !== "undefined") {
+            if (name === animals[i].name)
+            return animals.splice(animals[i], 1, replacement);
+            }
+        }
+}
 
 
 //////////////////////////////////////////////////////////////////////
 // Step 3 - Remove ///////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
-
+function remove(animals, name) {
+    for (i = 0; i < animals.length; i++) {
+        if (animals[i] && animals[i] !== "null" && animals[i] !== "undefined") {
+            if (name === animals[i].name)
+            return animals.splice(animals[i]);
+            }
+        }
+}
 
 
 //////////////////////////////////////////////////////////////////////
 // Step 4 - Add ///////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
-
+function add(animals, animal) {
+        if (animal.name && animal.name.length > 0) {
+            if (animal.species && animal.species.length > 0) {
+                  for (i = 0; i < animals.length; i++) {
+                    if (animals[i].name === animal.name) {
+                    }
+                }
+            }
+        }
+        return animals.push(animal);
+}
 
 
 /**
