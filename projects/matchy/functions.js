@@ -14,13 +14,17 @@
 //////////////////////////////////////////////////////////////////////
 function search(animals, name) {
     for (i = 0; i < animals.length; i++) {
-        if (animals[i].name === name && animals[i] !== "null" && animals[i] !== "undefined") {
+        if (animals[i] && animals[i] !== "null" && animals[i] !== "undefined") {
+            if (animals[i].name === name) {
             return animals[i];
+            } else {
+                return null;
+            }
         } else {
             return null;
         }
     }
-};
+}     
 
 
 //////////////////////////////////////////////////////////////////////
