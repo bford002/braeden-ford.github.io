@@ -54,15 +54,10 @@ function remove(animals, name) {
 // Step 4 - Add ///////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 function add(animals, animal) {
-        if (animal.name && animal.name.length > 0) {
-            if (animal.species && animal.species.length > 0) {
-                  for (i = 0; i < animals.length; i++) {
-                    if (animals[i].name === animal.name) {
-                    }
-                }
-            }
-        }
-        return animals.push(animal);
+     var animalExists = animals.find((a) => a.name === animal.name);
+    if ((!animalExists) && (animal.name.length > 0) && (animal.species.length > 0)) {
+        animals.push(animal);
+    }
 }
 
 
