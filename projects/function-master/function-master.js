@@ -24,9 +24,11 @@ function keysToString(object) {
 //////////////////////////////////////////////////////////////////////
 
 function valuesToString(object) {
-    var arr =[];
+    var arr = [];
     for (var key in object) {
-        arr.push(object[key]);
+        if (typeof object[key] === "string") {
+            arr.push(object[key]);
+        }
     }
     return arr.join(" ");
 }
@@ -178,10 +180,8 @@ function nonFriends(name, array) {
 //////////////////////////////////////////////////////////////////////
 
 function updateObject(object, key, value) {
-    if (object && object !== "null" && object !== "undefined") {
-        if (object.hasOwnProperty(key) === true) {
-        }
-    }
+    object[key] = value;
+    return object;
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -189,7 +189,13 @@ function updateObject(object, key, value) {
 //////////////////////////////////////////////////////////////////////
 
 function removeProperties(object, array) {
-
+    for (i = 0; i < array.length; i++) {
+        for (var key in object) {
+            if (array[i] === object[key])
+            delete object[key];
+        }
+    }
+    return object;
 }
 
 //////////////////////////////////////////////////////////////////////
