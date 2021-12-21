@@ -12,3 +12,8 @@
 git add -A
 git commit -m "Description of commit"
 git push
+
+
+
+lodown: cd lodown
+
