@@ -4,7 +4,8 @@
  * 0. Variables are used to hold things in memory. They are named identifiers that can point to values of a particular type.
  * Variables are called so because once created, the values to which they point can be changed.
  * 
- * 1. To create a variable we use a keywork (var, let, const) followed by a name for our variable.
+ * 1. To create a variable we use a keyword (var, let, const) followed by a name for our variable.
+ * 
  * 2. There are two phases of variables: declaration and assignment (declaration and assignemtn together = initialization).
  */
 
@@ -45,7 +46,7 @@ console.log(x); // prints => value
 
 // 5. Hoisting
 // Hoisitng is the process by which the interpreter moves the declaration (not initializations) of variables to the top of their scope
-console.log(x); // returns undefined (var is undefined)
+console.log(x); // returns undefined (var is not assigned)
 var x = "value";
 console.log(x); // prints => value
 
