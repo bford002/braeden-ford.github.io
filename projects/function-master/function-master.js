@@ -189,12 +189,11 @@ function updateObject(object, key, value) {
 //////////////////////////////////////////////////////////////////////
 
 function removeProperties(object, array) {
-    for (i = 0; i < array.length; i++) {
-        for (var key in object) {
-            if (array[i] === object[key])
+    array.forEach((string) => {
+        if (string === object[key]) {
             delete object[key];
         }
-    }
+    })
     return object;
 }
 

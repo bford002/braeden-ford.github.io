@@ -46,8 +46,11 @@ _.identity = function(value) {
 * _.typeOf([1,2,3]) -> "array"
 */
 _.typeOf = function(value) {
-    if (typeof value === 'object' && value !== null && value instanceof Date ===false ||
-    Array.isArray(value) === true)
+    if (typeof value === 'object' && value === null) {
+        return "null";
+    } else if (typeof value === "object" && Array.isArray(value)) {
+        return "array";
+    }
     return typeof value;
 }
 
@@ -69,6 +72,21 @@ _.typeOf = function(value) {
 *   _.first(["a", "b", "c"], 2) -> ["a", "b"]
 */
 
+_.first = function (arr, num) {
+    var numPresent = [];
+    if(Array.isArray(arr) && num === undefined){
+        return arr[0];
+    } else if(Array.isArray(arr) && num > arr.length){
+        return arr;
+    }else if(Array.isArray(arr) && num > 0){
+        for( var i = 0; i < num; i++){
+           numPresent.push(arr[i]);
+        }
+        return numPresent;
+        }
+    return [];
+    }
+
 
 /** _.last
 * Arguments:
@@ -88,6 +106,22 @@ _.typeOf = function(value) {
 *   _.last(["a", "b", "c"], 2) -> ["b", "c"]
 */
 
+_.last = function (arr, num){
+    var numPresent = [];
+    if(Array.isArray(arr) && num === undefined){
+        return arr[arr.length - 1];
+    } else if(Array.isArray(arr) && num > arr.length){
+        return arr;
+    }else if(Array.isArray(arr) && num > 0){
+        for( var i = arr.length - num; i <= num; i++){
+           numPresent.push(arr[i]);
+        }
+        return numPresent;
+        }
+    return [];
+}
+
+
 
 /** _.indexOf
 * Arguments:
@@ -106,6 +140,19 @@ _.typeOf = function(value) {
 */
 
 
+_.indexOf = function(arr, value){
+    for(var i = 0; i < arr.length; i++){
+        if(arr[i] === value){
+            return i;
+        }
+    }
+    return -1;
+}
+
+
+
+
+
 /** _.contains
 * Arguments:
 *   1) An array
@@ -120,6 +167,18 @@ _.typeOf = function(value) {
 * Examples:
 *   _.contains([1,"two", 3.14], "two") -> true
 */
+
+_.contains = function(arr, value){
+    for(var i = 0; i < arr.length; i++){
+        if(arr[i] === value){
+            return true;
+        }
+    }
+    return false;
+}
+
+
+
 
 
 /** _.each
@@ -138,6 +197,17 @@ _.typeOf = function(value) {
 *      -> should log "a" "b" "c" to the console
 */
 
+_.each = function(collection, func) {
+    if (Array.isArray(collection)) {
+        for (var i = 0; i < collection.length; i++) {
+            func(collection[i], i, collection);
+        }
+    } else {
+        for (var key in collection) {
+            func(collection[key], key, collection);
+        }
+    }
+};
 
 /** _.unique
 * Arguments:
@@ -148,6 +218,19 @@ _.typeOf = function(value) {
 * Examples:
 *   _.unique([1,2,2,4,5,6,5,2]) -> [1,2,4,5,6]
 */
+
+_.unique = function(arr) {
+    var newArr = [];
+    for (var i = 0; i < arr.length; i++) {
+        newArr.push(_.indexOf(arr[i]));
+    }
+    return newArr;
+}
+
+
+
+
+
 
 
 /** _.filter
@@ -217,6 +300,21 @@ _.typeOf = function(value) {
 *   _.map([1,2,3,4], function(e){return e * 2}) -> [2,4,6,8]
 */
 
+_.map = function(collection, func) {
+    var newArray = [];
+    if (Array.isArray(collection)) {
+        var result = func(collection[i], i, collection);
+        newArray.push(result);
+    } else {
+        for (var key in collection) {
+            var result = func(collection[key], key, collection);
+            newArray.push(result);
+        }
+    }
+   return newArray; 
+};
+
+
 
 /** _.pluck
 * Arguments:
@@ -250,6 +348,21 @@ _.typeOf = function(value) {
 *   _.every([2,4,6], function(e){return e % 2 === 0}) -> true
 *   _.every([1,2,3], function(e){return e % 2 === 0}) -> false
 */
+
+
+_.every = function(collection, func) {
+
+// if input function is truthy
+if (func) {
+// if every value in input array passes the test when called as an argument on func
+} else {
+    // if every value in input array resolves to truthy
+}
+
+// else it resolves to a falsy value
+
+}
+
 
 
 /** _.some

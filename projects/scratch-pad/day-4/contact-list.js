@@ -78,7 +78,6 @@ function makeContactList() {
                 fullName.push(contacts[i].nameFirst.concat(" ", contacts[i].nameLast));
                 }
                 return fullName.join("\n");
-                
             }
     }
 }
