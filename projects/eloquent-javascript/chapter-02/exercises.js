@@ -33,18 +33,31 @@ function fizzBuzz() {
 ////////////////////////////////////////////////////////////////////////////////
 
 function drawChessboard(x) {
-  let ans = "";
+  var chessBoard = [];
   for (let i = 0; i < x; i++) {
-    for (let y = 0; y < x; y++) {
-      if ((i + y ) % 2 === 0) {
-        ans += " ";
-      } else {
-        ans += "#";
+    let row;
+    if (i % 2 === 0) {
+      row = " ";
+      for (let i = 1; i < x; i++) {
+        if (i % 2 === 0) {
+          row += " ";
+        } else {
+          row += "#";
+        }
+      }
+    } else {
+      row = "#";
+      for (let i = 1; i < x; i++) {
+        if (i % 2 === 0) {
+          row += "#";
+        } else {
+          row += " ";
+        }
       }
     }
-    ans += "\n";
+    chessBoard.push(row);
   }
-  console.log(ans);
+  console.log(chessBoard.join("\n") + "\n");
 }
 
 ////////////////////////////////////////////////////////////////////////////////
