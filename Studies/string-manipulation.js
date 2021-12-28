@@ -15,7 +15,7 @@
 var str = "Braeden";
 console.log(str[1]); // prints => r
 
-// Using operators
+// Using operators:
 // Multiple strings can be put into one string using the plus (+) operator.
 var str1 = "Braeden";
 var str2 = "Ford";
@@ -29,7 +29,32 @@ var str = "string";
 console.log(str.slice(1, 4)); // prints => tri
 
 // .replace()
+// This method replaces a specified value with another value in a string. It does not change the sting but reurns a new string.
+var str = "Braeden Ford";
+console.log(str.replace("Ford", "Alexander")); // prints => Braeden Alexander
 
+// .toUpperCase()
+// This method converts a string to upper case.
+var str = "string";
+console.log(str.toUpperCase()); // prints => STRING
 
+// .toLowerCase()
+// This method converts a string to lower case.
+var str = "STRING";
+console.log(str.toLowerCase()); // prints => string
+
+// .concat()
+/* This method joins two or more strings. It works the same as using the plus (+) operator to join strings. It takes in elements to 
+seperate the strings, as well. */
+var str1 = "string one";
+var str2 = "string two";
+var str3 = "string three";
+console.log(str1.concat(", ", str2, ", ", str3)); // prints => string one, string two, string three
+
+// .split()
+// This method converts a string into an array.
+var str = "This is a string.";
+var arr = str.split(" ");
+console.log(arr); // prints => ["This", "is", "a", "string"]
 
 
