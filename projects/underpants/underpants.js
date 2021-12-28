@@ -221,10 +221,12 @@ _.each = function(collection, func) {
 
 _.unique = function(arr) {
     var newArr = [];
-    for (var i = 0; i < arr.length; i++) {
-        newArr.push(_.indexOf(arr[i]));
+    for (let i = 0; i < arr.length; i++) {
+        if (newArr.indexOf(arr[i]) < 0) {
+            newArr.push(arr[i]);
+        }
     }
-    return newArr;
+  return newArr;
 }
 
 
@@ -249,6 +251,16 @@ _.unique = function(arr) {
 *   use _.each in your implementation
 */
 
+_.filter = function(arr, func) {
+    let newArr = [];
+    for (let i = 0; i < arr.length; i++) {
+        if (func(arr[i], i, arr) === true) {
+            newArr.push(arr[i]);
+        }
+    }
+    return newArr;
+}
+
 
 /** _.reject
 * Arguments:
@@ -262,6 +274,16 @@ _.unique = function(arr) {
 * Examples:
 *   _.reject([1,2,3,4,5], function(e){return e%2 === 0}) -> [1,3,5]
 */
+
+_.reject = function(arr, func) {
+    let newArr = [];
+    for (let i = 0; i < arr.length; i++) {
+        if (func(arr[i], i, arr) === false) {
+            newArr.push(arr[i]);
+        }
+    }
+    return newArr;
+}
 
 
 /** _.partition
@@ -283,6 +305,18 @@ _.unique = function(arr) {
 }
 */
 
+_.partition = function(arr, func) {
+    let newArr = [[], []];
+    for (let i = 0; i < arr.length; i++) {
+        if (func(arr[i], i, arr) === true) {
+            newArr[0].push(arr[i]);
+        } else if (func(arr[i], i, arr) === false) {
+            newArr[1].push(arr[i]);
+        }
+    }
+    return newArr;
+}
+
 
 /** _.map
 * Arguments:
@@ -301,17 +335,23 @@ _.unique = function(arr) {
 */
 
 _.map = function(collection, func) {
-    var newArray = [];
-    if (Array.isArray(collection)) {
-        var result = func(collection[i], i, collection);
-        newArray.push(result);
-    } else {
-        for (var key in collection) {
-            var result = func(collection[key], key, collection);
-            newArray.push(result);
-        }
-    }
-   return newArray; 
+    var outputArr = [];
+//determine if collection is array 
+if(Array.isArray(collection)){
+//iterate through array 
+for(var i = 0; i <collection.length; i++){
+    //call the input function, passing in the current array value, current index, and collection
+    var result = func(collection[i], i, collection); 
+    outputArr.push(result);
+}
+} else {
+for (var key in collection) {
+    var result = func(collection[key], key, collection);
+    outputArr.push(result);
+}
+}
+//return output Array 
+return outputArr;
 };
 
 
