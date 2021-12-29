@@ -78,8 +78,8 @@ _.first = function (arr, num) {
         return arr[0];
     } else if(Array.isArray(arr) && num > arr.length){
         return arr;
-    }else if(Array.isArray(arr) && num > 0){
-        for( var i = 0; i < num; i++){
+    } else if(Array.isArray(arr) && num > 0){
+        for(var i = 0; i < num; i++){
            numPresent.push(arr[i]);
         }
         return numPresent;
@@ -207,7 +207,7 @@ _.each = function(collection, func) {
             func(collection[key], key, collection);
         }
     }
-};
+}
 
 /** _.unique
 * Arguments:
@@ -339,7 +339,7 @@ _.map = function(collection, func) {
 //determine if collection is array 
 if(Array.isArray(collection)){
 //iterate through array 
-for(var i = 0; i <collection.length; i++){
+for(var i = 0; i < collection.length; i++){
     //call the input function, passing in the current array value, current index, and collection
     var result = func(collection[i], i, collection); 
     outputArr.push(result);
@@ -367,6 +367,19 @@ return outputArr;
 *   _.pluck([{a: "one"}, {a: "two"}], "a") -> ["one", "two"]
 */
 
+_.pluck = function (array, prop){
+    let arr = [];
+      array.map(function(array){
+          for (var key in array){
+              if(key === prop){
+                  arr.push(array[key]);
+              }
+          }
+      })
+    return arr;
+}
+
+
 
 /** _.every
 * Arguments:
@@ -391,17 +404,42 @@ return outputArr;
 
 
 _.every = function(collection, func) {
+    if (func) {
+        for (let i = 0; i < collection.length; i++) {
+            if (Array.isArray(collection)) {
+                func(collection[i], i, collection);
+                if (func(collection[i]) === false) {
+                    return false;
+                }
+            } else {
+                for (var key in collection) {
+                    func(collection[key], key, collection);
+                    if (func(collection[key]) === false) {
+                        return false;
+                    }
+                }
+            }
+    }
+    return true;
+}
+return false;
+}
+
+
+
+
+
+
 
 // if input function is truthy
-if (func) {
+//if (func) {
 // if every value in input array passes the test when called as an argument on func
-} else {
+//} else {
     // if every value in input array resolves to truthy
-}
+//}
 
 // else it resolves to a falsy value
 
-}
 
 
 
@@ -426,6 +464,14 @@ if (func) {
 *   _.some([1,2,3], function(e){return e % 2 === 0}) -> true
 */
 
+_.some = function(collection, func) {
+    if (func) {
+    }
+    return false;
+}
+
+
+
 
 /** _.reduce
 * Arguments:
@@ -445,6 +491,23 @@ if (func) {
 * Examples:
 *   _.reduce([1,2,3], function(previousSum, currentValue, currentIndex){ return previousSum + currentValue }, 0) -> 6
 */
+
+_.reduce = function(array, func, seed) {
+    if (seed === undefined) {
+        seed = array[0];
+        for (let i = 1; i < array.length; i++) {
+            seed = func(seed, array[i], i);
+        }
+    } else {
+        for (let i = 0; i < array.length; i++) {
+            seed = func(seed, array[i], i);
+        }
+    }
+    return seed;
+}
+
+
+
 
 
 /** _.extend
