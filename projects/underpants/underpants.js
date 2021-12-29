@@ -405,40 +405,41 @@ _.pluck = function (array, prop){
 
 _.every = function(collection, func) {
     if (func) {
-        for (let i = 0; i < collection.length; i++) {
-            if (Array.isArray(collection)) {
+        if (Array.isArray(collection)) {
+            for (let i = 0;i < collection.length; i++) {
                 func(collection[i], i, collection);
-                if (func(collection[i]) === false) {
+                if (func(collection[i], i, collection) === false) {
                     return false;
                 }
-            } else {
-                for (var key in collection) {
-                    func(collection[key], key, collection);
-                    if (func(collection[key]) === false) {
-                        return false;
-                    }
+            }
+            return true;
+        } else {
+            for (var key in collection) {
+                func(collection[key], key, collection);
+                if (func(collection[key], key, collection) === false) {
+                    return false;
+                } 
+            }
+            return true;
+        }
+    } else {
+        if (Array.isArray(collection)) {
+            for (let i = 0;i < collection.length; i++) {
+                if (collection[i] === false) {
+                    return false;
                 }
             }
+            return true;
+        } else {
+            for (var key in collection) {
+                if (collection[key] === false) {
+                    return false;
+                } 
+            }
+            return true;
+        }
     }
-    return true;
 }
-return false;
-}
-
-
-
-
-
-
-
-// if input function is truthy
-//if (func) {
-// if every value in input array passes the test when called as an argument on func
-//} else {
-    // if every value in input array resolves to truthy
-//}
-
-// else it resolves to a falsy value
 
 
 
