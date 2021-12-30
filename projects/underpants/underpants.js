@@ -467,9 +467,43 @@ _.every = function(collection, func) {
 
 _.some = function(collection, func) {
     if (func) {
+        if (Array.isArray(collection)) {
+            for (let i = 0;i < collection.length; i++) {
+                func(collection[i], i, collection);
+                if (func(collection[i], i, collection) === true) {
+                    return true;
+                }
+            }
+            return false;
+        } else {
+            for (var key in collection) {
+                func(collection[key], key, collection);
+                if (func(collection[key], key, collection) === true) {
+                    return true;
+                } 
+            }
+            return false;
+        }
+    } else {
+        if (Array.isArray(collection)) {
+            for (let i = 0;i < collection.length; i++) {
+                if (collection[i] === true) {
+                    return true;
+                }
+            }
+            return false;
+        } else {
+            for (var key in collection) {
+                if (collection[key] === true) {
+                    return true;
+                } 
+            }
+            return false;
+        }
     }
-    return false;
 }
+
+
 
 
 
@@ -525,6 +559,23 @@ _.reduce = function(array, func, seed) {
 *   _.extend(data, {b:"two"}); -> data now equals {a:"one",b:"two"}
 *   _.extend(data, {a:"two"}); -> data now equals {a:"two"}
 */
+
+_.extend = function(...args) {
+    return args.reduce(function(object1, object2){
+        Object.assign(object1, object2);
+        return object1;
+    });
+}
+
+
+
+
+
+
+
+
+
+
 
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////
