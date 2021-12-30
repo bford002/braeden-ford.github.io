@@ -38,11 +38,53 @@ var femaleCount = function(array) {
     return numFemales;
 };
 
-var oldestCustomer;
+var oldestCustomer = function(array) {
+    let oldest = 0
+    for (let i = 0; i < array.length; i++) {
+        if (array[i].age > oldest) {
+            oldest = array[i].age;
+        }
+  }
+  for (let i = 0; i < array.length; i++) {
+      if (oldest === array[i].age) {
+          return array[i].name;
+      }
+  }
+}
 
-var youngestCustomer;
 
-var averageBalance;
+
+
+var youngestCustomer = function(array) {
+    let youngest = 200
+    for (let i = 0; i < array.length; i++) {
+        if (array[i].age < youngest) {
+            youngest = array[i].age;
+        }
+  }
+  for (let i = 0; i < array.length; i++) {
+      if (youngest === array[i].age) {
+          return array[i].name;
+      }
+  }
+}
+
+
+
+var averageBalance = function(array) {
+    let total = 0;
+    for (let i = 0; i < array.length; i++) {
+        total += array[i].balance;
+    }
+    let avg = total / array.length;
+    return avg;
+}
+
+
+
+
+
+
 
 var firstLetterCount;
 
