@@ -4,6 +4,7 @@
 
 var customers = require('./data/customers.json');
 var _ = require('underbar');
+const { lowerCase } = require('lodash');
 
 /**
  * 1. Import your lodown module using the require() method,
@@ -72,11 +73,15 @@ var youngestCustomer = function(array) {
 
 
 var averageBalance = function(array) {
-    let total = 0;
+    let nums = [];
     for (let i = 0; i < array.length; i++) {
-        total += array[i].balance;
+        nums.push(parseFloat(array[i].balance.slice(1)));
     }
-    let avg = total / array.length;
+    let total = 0
+    for (let y = 0; y < nums.length; y++) {
+        total += nums[y];
+    }
+    let avg = total / nums.length;
     return avg;
 }
 
@@ -84,13 +89,48 @@ var averageBalance = function(array) {
 
 
 
+var firstLetterCount = function(array, letter) {
+    let firstLetterNum = [];
+    for (let i = 0; i < array.length; i++) {
+        if (array[i].name[0].toLowerCase() === letter.toLowerCase()) {
+            firstLetterNum.push(array[i].name);
+        }
+    }
+    return firstLetterNum.length;
+}
 
 
-var firstLetterCount;
 
-var friendFirstLetterCount;
+var friendFirstLetterCount = function(array, customer, letter) {
+    let friendFirstLetter = [];
+    for (let i = 0; i < array.length; i++) {
+        if (array[i].name.toLowerCase() === customer.toLowerCase()) {
+            for (let y = 0; y < array[i].friends.length; y++) {
+                if (array[i].friends[y].name[0].toLowerCase() === letter.toLowerCase()) {
+                    friendFirstLetter.push(array[i].friends[y].name);
+                }
+            }
+        }
+    }
+    return friendFirstLetter.length;
+}
 
-var friendsCount;
+
+
+
+var friendsCount = function(array, name) {
+    let names = [];
+    for (let i = 0; i < array.length; i++) {
+        for (let y = 0; y < array[i].friends.length; y++) {
+            if (array[i].friends[y].name === name) {
+                names.push(array[i].name);
+            }
+        }
+    }
+    return names;
+}
+
+
 
 var topThreeTags;
 
