@@ -51,7 +51,7 @@ var oldestCustomer = function(array) {
           return array[i].name;
       }
   }
-}
+};
 
 
 
@@ -68,22 +68,24 @@ var youngestCustomer = function(array) {
           return array[i].name;
       }
   }
-}
+};
 
 
 
 var averageBalance = function(array) {
-    let nums = [];
-    for (let i = 0; i < array.length; i++) {
-        nums.push(parseFloat(array[i].balance.slice(1)));
+    let nums = array.map(function(customer) {
+        return customer.balance.replace("$", "").replace(",", "");
+    });
+    nums.forEach(function(number) {
+        Number(number);
+    });
+    let total = 0;
+    for (let i = 0; i < nums.length; i++) {
+        total += nums[i];
     }
-    let total = 0
-    for (let y = 0; y < nums.length; y++) {
-        total += nums[y];
-    }
-    let avg = total / nums.length;
+    let avg = total / array.length;
     return avg;
-}
+};
 
 
 
@@ -97,7 +99,7 @@ var firstLetterCount = function(array, letter) {
         }
     }
     return firstLetterNum.length;
-}
+};
 
 
 
@@ -113,7 +115,7 @@ var friendFirstLetterCount = function(array, customer, letter) {
         }
     }
     return friendFirstLetter.length;
-}
+};
 
 
 
@@ -128,11 +130,21 @@ var friendsCount = function(array, name) {
         }
     }
     return names;
-}
+};
 
 
 
-var topThreeTags;
+var topThreeTags = function (array) {
+    let top = [];
+    for (let i = 0; i < array.length; i++) {
+        for (let y = 0; y < array[i].tags.length; y++) {
+            if (array[i].tags[y] === )
+        }
+    }
+};
+
+
+
 
 var genderCount;
 
