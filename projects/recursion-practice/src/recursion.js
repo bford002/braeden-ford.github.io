@@ -69,15 +69,17 @@ var sumBelow = function(n) {
 // Example:  range(2, 9);  // [3, 4, 5, 6, 7, 8]
 var range = function(x, y, outputArr=[]) {
   // base
-  if (x === y) {
+  if (x === y - 1 || y === x - 1) {
+    return outputArr;
+  } else if (x === y) {
     return outputArr;
   }
 
   // recursion
-  if (x > 0) {
+  if (x < y) {
     outputArr.push(x + 1);
     return range(x + 1, y, outputArr);
-  } else {
+  } else if (x > y) {
     outputArr.push(x - 1);
     return range(x - 1, y, outputArr);
   }
@@ -90,9 +92,17 @@ var range = function(x, y, outputArr=[]) {
 // https://www.khanacademy.org/computing/computer-science/algorithms/recursive-algorithms/a/computing-powers-of-a-number
 var exponent = function(base, exp) {
   // base
-
+  if (exp === 0) {
+    return 1;
+  } else if (exp === 1) {
+    return base;
+  }
   // recursion
-
+  if (exp > 0) {
+    return base * exponent(base, exp - 1);
+  } else {
+    return 1 / base * exponent(1 / base, -exp - 1);
+  }
 };
 
 // 8. Determine if a number is a power of two.
@@ -100,15 +110,41 @@ var exponent = function(base, exp) {
 // powerOfTwo(16); // true
 // powerOfTwo(10); // false
 var powerOfTwo = function(n) {
+  // base
+
+  // recursion
+    if (n === 1){
+      return true;
+    } else if (n === 0){
+      return false;
+    }
+    return powerOfTwo(n/2);
 };
 
-// 9. Write a function that accepts a string a reverses it.
-var reverse = function(string) {
+// 9. Write a function that accepts a string and reverses it.
+var reverse = function(string, outputStr="") {
+  // base
+  if (string.length === 0) {
+    return outputStr;
+  }
+  // recursion
+  return string[string.length - 1] + reverse(string.slice(0, -1), outputStr);
 };
 
 // 10. Write a function that determines if a string is a palindrome.
 var palindrome = function(string) {
-};
+  // base
+  if(string.length === 1) {
+    return true;
+  } else if (string.length === 2) {
+    return string[0].toLowerCase().split(" ").join("") === str[1].toLowerCase().split(" ").join("");
+  }
+  // recursion
+    if(string[0].toLowerCase().split(" ").join("") === string.slice(-1).toLowerCase().split(" ").join("")) {
+      return palindrome(string.slice(1,-1).toLowerCase().split(" ").join(""))
+    }
+    return false;
+}
 
 // 11. Write a function that returns the remainder of x divided by y without using the
 // modulo (%) operator.
@@ -122,7 +158,14 @@ var modulo = function(x, y) {
 // JavaScript's Math object.
 // ATTENTION DO NOT LEAVE COMMENTS IN THIS FUNCTION. The test is looking for any ('/').
 var multiply = function(x, y) {
+  if (y === 0 || x === 0) {
+    return 0;
+  }
+  if (x > 0 && y > 0) {
+    return x + multiply(x, y - 1);
+  }
 };
+//(2, 4) 2 + 2 + 2 + 2
 
 // 13. Write a function that divides two numbers without using the / operator  or
 // JavaScript's Math object.
