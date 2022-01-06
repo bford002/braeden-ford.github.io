@@ -163,6 +163,12 @@ var multiply = function(x, y) {
   }
   if (x > 0 && y > 0) {
     return x + multiply(x, y - 1);
+  } else if (x < 0 && y > 0) {
+    return -y + multiply(-y, -x - 1);
+  } else if (x > 0 && y < 0) {
+    return x + multiply(x, -y - 1);
+  } else if (x < 0 && y < 0) {
+    return -x + multiply(-x, -y - 1);
   }
 };
 //(2, 4) 2 + 2 + 2 + 2
@@ -186,27 +192,66 @@ var gcd = function(x, y) {
 // compareStr('', '') // true
 // compareStr('tomato', 'tomato') // true
 var compareStr = function(str1, str2) {
+  // base
+  if (str1.length === 0 || str2.length === 0) {
+    return str1 === str2;
+  }
+  // recursion
+  if (str1[0] === str2[0]){
+    return compareStr(str1.slice(1), str2.slice(1));
+  }
 };
 
 // 16. Write a function that accepts a string and creates an array where each letter
 // occupies an index of the array.
-var createArray = function(str){
+var createArray = function(str, outputArr=[]){
+  // base
+  if (str.length === 0) {
+    return outputArr;
+  }
+  // recursion
+  outputArr.push(str[0]);
+  return createArray(str.slice(1), outputArr);
 };
 
 // 17. Reverse the order of an array
-var reverseArr = function (array) {
+var reverseArr = function (array, outputArr=[]) {
+  // base
+  if (array.length === 0) {
+    return outputArr;
+  }
+  // recursion
+  outputArr.push(array[array.length - 1])
+  return reverseArr(array.slice(0, -1), outputArr);
 };
 
 // 18. Create a new array with a given value and length.
 // buildList(0,5) // [0,0,0,0,0]
 // buildList(7,3) // [7,7,7]
-var buildList = function(value, length) {
+var buildList = function(value, length, outputArr=[]) {
+  // base
+  if (outputArr.length === length) {
+    return outputArr;
+  }
+  // recursion
+  outputArr.push(value)
+  return buildList(value, length, outputArr);
 };
 
 // 19. Count the occurence of a value inside a list.
 // countOccurrence([2,7,4,4,1,4], 4) // 3
 // countOccurrence([2,'banana',4,4,1,'banana'], 'banana') // 2
 var countOccurrence = function(array, value) {
+  // base
+  let num = 0;
+  if (array.length === 0) {
+    return num;
+  }
+  // recursion
+  if (array[0] === value) {
+    num++;
+  }
+    return countOccurrence(array.slice(1), value);
 };
 
 // 20. Write a recursive version of map.
