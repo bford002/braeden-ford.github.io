@@ -189,6 +189,11 @@ function updateObject(object, key, value) {
 //////////////////////////////////////////////////////////////////////
 
 function removeProperties(object, array) {
+    for (let i = 0; i < array.length; i++) {
+        if (object.hasOwnProperty(array[i])) {
+            delete object[array[i]];
+        }
+    }
 }
 
 //////////////////////////////////////////////////////////////////////
