@@ -1,0 +1,47 @@
+/**
+FUNCTIONS:
+
+0. Functions are blocks of code that allow us to execute the code within the block whenever 
+we want and how ever many times we want.
+
+1. There are two phases of functions: 1. declaring the function (aka function expression). 2. calling/invoking the function.
+Declaring the function is when you create the function and invoking or calling the function is when
+you use the function. The keyword to declare a function is "function".
+
+2. Functions take inputs which are called parameters. The inputs chosen to put in place of the parameters 
+are called arguments. The functions execute code on the arguments passed in. Functions can optionally
+take these inputs and optionally output something. In order to output something, the function must contain
+a return statement.
+
+3. Functions can modify variables in parent and global scopes. Variables in parent or global scopes cannot access
+variables or values within the function (function scope).
+
+4. Functions form closures around data, meaning if an object is returned and stored in memory somewhere to be referenced later, 
+the closure stays alive and data can continue to exists within these closures.
+ */
+
+// Declaring a function (function expression):
+function(parameter1, parameter2) { // "function" is the keyword to declare a function
+    // function body: the code to be executed goes here
+}
+
+// Assigning a function to a variable
+let func = function(parameter1, parameter2) {
+
+};
+
+// Declaring a named function
+function func(parameter1, parameter2) { // func is the function name
+
+}
+
+// Function that does not take inputs (parameters) and does not output (return statement) anything
+function() {
+
+}
+
+// Function that takes an inout of an array and outputs that same array
+function(array) {
+    return array // return statement => output
+}
+

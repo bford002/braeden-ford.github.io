@@ -73,21 +73,45 @@ var youngestCustomer = function(array) {
 
 
 var averageBalance = function(array) {
-    let nums = array.map(function(customer) {
-        return customer.balance.replace("$", "").replace(",", "");
-    });
-    nums.forEach(function(number) {
-        Number(number);
-    });
+    let nums = [];
+    for (let i = 0; i < array.length; i++) {
+        nums.push(array[i].balance);
+        for (let j = 0; j < nums.length; j++) {
+            nums[j].replace(/[$,]/g, "");
+          }
+        for (let y = 0; y < nums.length; y++) {
+            Number(nums[y]);
+        }
+    }
     let total = 0;
-    for (let i = 0; i < nums.length; i++) {
+    for (let i = 0; i < nums.length;i++) {
         total += nums[i];
     }
-    let avg = total / array.length;
+    let avg = total / nums.length;
     return avg;
+
+
+
+
+
+
+/*
+    let numsArr = array.map(function(customer) {
+        return customer.balance.replace(/[$,]/g, '');
+    });
+    numsArr.forEach(function(numberStr) {
+        Number(numberStr);
+    });
+    let total = 0;
+    for (let i = 0; i < numsArr.length; i++) {
+        total += numsArr[i];
+    }
+    let avg = total / numsArr.length;
+        return avg;
+*/
 };
 
-
+//var balance = "// replace with regular exp" (/)
 
 
 
@@ -134,19 +158,55 @@ var friendsCount = function(array, name) {
 
 
 
-var topThreeTags = function (array) {
-    let top = [];
+var topThreeTags = function(array) {
+    // new array with all tags
+    let allTags = [];
     for (let i = 0; i < array.length; i++) {
         for (let y = 0; y < array[i].tags.length; y++) {
-            if (array[i].tags[y] === )
+            allTags.push(array[i].tags[y]);
         }
     }
+    // new array with all tags into an object with tag: number of times seen. -> tagNum = { key1 : 1, key2 : 2....}
+    let tagNum = allTags.reduce(function(obj, currentTag) {
+        // if current tag exists
+        if (currentTag) {
+            obj[currentTag] += 1;
+        // else doesnt 
+        } else {
+            obj[currentTag] = 1;
+        }
+        return obj;
+    }, {});
+    // tags object to array
+    let newNumArr = Object.entries(tagNum);
+    // sort array in descending order
+    let newNumArrSort = newNumArr.sort((a, b) => {
+        if (a[1] > b[1]) {
+            return a[0] - b[0];
+        } else if (a[1] < b[1]) {
+            return b[0] - a[0];
+        } else {
+            return b[0] - a[0];
+        }
+    });
+    // return first 3 in array
+    return newNumArrSort.slice(0, 3);
 };
 
 
 
-
 var genderCount;
+/* .reduce(function(obj, current) {
+ // if current tag exists
+        if (current) {
+            obj[current] += 1;
+         // else doesnt 
+        } else {
+            obj[current] = 1;
+        }
+        return obj;
+}, {});
+*/
 
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////
