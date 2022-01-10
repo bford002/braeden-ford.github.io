@@ -169,7 +169,7 @@ var topThreeTags = function(array) {
     // new array with all tags into an object with tag: number of times seen. -> tagNum = { key1 : 1, key2 : 2....}
     let tagNum = allTags.reduce(function(obj, currentTag) {
         // if current tag exists
-        if (currentTag) {
+        if (obj[currentTag]) {
             obj[currentTag] += 1;
         // else doesnt 
         } else {
@@ -180,33 +180,25 @@ var topThreeTags = function(array) {
     // tags object to array
     let newNumArr = Object.entries(tagNum);
     // sort array in descending order
-    let newNumArrSort = newNumArr.sort((a, b) => {
-        if (a[1] > b[1]) {
-            return a[0] - b[0];
-        } else if (a[1] < b[1]) {
-            return b[0] - a[0];
-        } else {
-            return b[0] - a[0];
-        }
-    });
+    let newNumArrSort;
     // return first 3 in array
-    return newNumArrSort.slice(0, 3);
+    return newNumArrSort.slic(0, 3);
 };
 
 
 
-var genderCount;
-/* .reduce(function(obj, current) {
- // if current tag exists
-        if (current) {
-            obj[current] += 1;
-         // else doesnt 
+var genderCount = function(array) {
+    return array.reduce(function(obj, current) {
+        // if current exists
+        if (obj[current.gender]) {
+           obj[current.gender] += 1;
+        // else doesnt 
         } else {
-            obj[current] = 1;
+           obj[current.gender] = 1;
         }
         return obj;
-}, {});
-*/
+ }, {});
+};
 
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////
