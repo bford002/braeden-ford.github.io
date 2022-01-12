@@ -88,7 +88,17 @@ function reverseArrayInPlace(array) {
 
 function listToArray(obj) {
   var arr = [];
+  if (typeof list === 'undefined' || list.value === undefined || list.rest === undefined) {
+    return arr;
+  } else {
   arr.push(obj.value);
+  while(obj.hasOwnProperty("rest") && obj.rest !== null) {
+    obj = obj.rest;
+    if (obj.hasOwnProperty("value")) {
+      arr.push(obj.value);
+    }
+  }
+}
   return arr;
 }
 
@@ -96,8 +106,11 @@ function listToArray(obj) {
 // prepend /////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function prepend() {
-
+function prepend(element, obj) {
+  return {
+    value: element,
+    rest: obj
+  };
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -108,9 +121,12 @@ function nth(list, n) {
   // base
   if (n === 0) {
     return list.value;
-  }
-  // recursion
+  } else if (list.rest === null) {
+    return undefined;
+  } else {
+    // recursion
   return nth(list.rest, n - 1);
+  }
 }
 
 ////////////////////////////////////////////////////////////////////////////////
