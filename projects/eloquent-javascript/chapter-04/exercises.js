@@ -15,8 +15,9 @@ function range(start, end, step) {
     if (step < 0) {
       return [];
     } else {
-      for (var i = start; i <= end; i+=step);
-      range.push(i);
+      for (var i = start; i <= end; i+=step) {
+        range.push(i);
+      }
     }
   }
   return range;
@@ -26,8 +27,10 @@ function range(start, end, step) {
 // sum /////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function sum() {
-
+function sum(array) {
+  return array.reduce((acc, current) => {
+    return acc + current;
+  }, 0);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -35,6 +38,11 @@ function sum() {
 ////////////////////////////////////////////////////////////////////////////////
 
 function reverseArray(array) {
+  let revArr = [];
+  for (let i = array.length - 1; i >= 0; i--) {
+    revArr.push(array[i]);
+  }
+  return revArr;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -63,12 +71,14 @@ function reverseArrayInPlace(array) {
 ////////////////////////////////////////////////////////////////////////////////
 
   function arrayToList(array) {
-  
- // var rest = null;
-  //for (var i = array.length - 1; 1 >= 0; i--) {
-   // rest = { value: array[i], rest };
- // }
-  //return rest;
+    var list = null;
+    for (var i = array.length - 1; i >= 0; i--) {
+    list = { 
+      value: array[i], 
+      rest: list 
+    }
+  }
+  return list;
 }
 
 
@@ -76,8 +86,10 @@ function reverseArrayInPlace(array) {
 // listToArray /////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function listToArray() {
-
+function listToArray(obj) {
+  var arr = [];
+  arr.push(obj.value);
+  return arr;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -105,7 +117,25 @@ function nth(list, n) {
 // deepEqual ///////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function deepEqual() {
+function deepEqual(x, y) {
+  if (typeof x !== "object" && typeof y !== "object") {
+    return x === y;
+  }
+  if (typeof x !== "object" || typeof y !== "object") {
+    return false;
+  }
+  let xKeys = Object.keys(x);
+  let yKeys = Object.keys(y);
+
+  if (xKeys.length !== yKeys.length) {
+    return false;
+  }
+  for (let i = 0; i < xKeys.length; i++) {
+    if (!yKeys.includes(xKeys[i]) || !deepEqual(x[xKeys[i]], y[yKeys[i]])) {
+      return false;
+    }
+  }
+  return true;
 
 }
 

@@ -417,9 +417,14 @@ var alternateSign = function(array, outputArr=[]) {
   }
   // recursion
   if (array[0] < 0) {
-    outputArr[0] = array[0] * -1;
-  } else if (array[0] >= 0) {
-    outputArr[0] = array[0];
+    outputArr.push(array[0] * -1);
+  } else {
+    outputArr.push(array[0]);
+  } 
+  if (array[1] > 0) {
+    outputArr.push(array[1] * -1);
+  } else {
+    outputArr.push(array[1]);
   }
   
   return alternateSign(array.slice(1), outputArr);
@@ -429,6 +434,29 @@ var alternateSign = function(array, outputArr=[]) {
 // Assume all numbers are single digits (less than 10).
 // numToText("I have 5 dogs and 6 ponies"); // "I have five dogs and six ponies"
 var numToText = function(str) {
+  let obj = {
+  zero: ["0", "zero"],
+  one: ["1", "one"],
+  two: ["2", "two"],
+  three: ["3", "three"],
+  four: ["4", "four"],
+  five: ["5", "five"],
+  six: ["6", "six"],
+  seven: ["7", "seven"],
+  eight: ["8", "eight"],
+  nine: ["9", "nine"]
+  };
+  // base
+  if (str.length === 0) {
+    return str;
+  }
+  // recursion
+  for (var key in obj) {
+    if (str[0] === obj[key][0]) {
+      str.replace(str[0], obj[key][1]);
+    }
+  }
+  return str[0] + numToText(str.slice(1));
 };
 
 // *** EXTRA CREDIT ***
