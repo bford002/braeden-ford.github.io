@@ -436,31 +436,44 @@ var alternateSign = function(array, index=0, outputArr=[]) {
 // 35. Given a string, return a string with digits converted to their word equivalent.
 // Assume all numbers are single digits (less than 10).
 // numToText("I have 5 dogs and 6 ponies"); // "I have five dogs and six ponies"
-var numToText = function(str) {
+var numToText = function(str, outputStr="") {
   let obj = {
-  zero: ["0", "zero"],
-  one: ["1", "one"],
-  two: ["2", "two"],
-  three: ["3", "three"],
-  four: ["4", "four"],
-  five: ["5", "five"],
-  six: ["6", "six"],
-  seven: ["7", "seven"],
-  eight: ["8", "eight"],
-  nine: ["9", "nine"]
+  0: "zero",
+  1: "one",
+  2: "two",
+  3: "three",
+  4: "four",
+  5: "five",
+  6: "six",
+  7: "seven",
+  8: "eight",
+  9: "nine"
   };
   // base
   if (str.length === 0) {
-    return str;
+    return outputStr;
   }
   // recursion
-  for (var key in obj) {
-    if (str[0] === obj[key][0]) {
-      str.replace(str[0], obj[key][1]);
-    }
+  if (obj.hasOwnProperty(str[0])) {
+    outputStr += obj[str[0]];
+  } else {
+    outputStr += str[0];
   }
-  return str[0] + numToText(str.slice(1));
+  outputStr + str[0];
+  return numToText(str.slice(1), outputStr);
 };
+
+//if str[0] is 1, 2, 3
+// obj.hasOwnProperty()
+/*
+0: "zero",
+1: "one"
+if (has own prop[str0]) {
+
+} else {
+
+}
+*/
 
 // *** EXTRA CREDIT ***
 
