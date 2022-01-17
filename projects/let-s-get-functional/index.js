@@ -75,43 +75,18 @@ var youngestCustomer = function(array) {
 var averageBalance = function(array) {
     let nums = [];
     for (let i = 0; i < array.length; i++) {
-        nums.push(array[i].balance);
-        for (let j = 0; j < nums.length; j++) {
-            nums[j].replace(/[$,]/g, "");
-          }
-        for (let y = 0; y < nums.length; y++) {
-            Number(nums[y]);
-        }
+        var currentBalance = array[i].balance;
+        var currentNoSym = currentBalance.replace(/[$,]/g, "");
+        var currentToNumber = Number(currentNoSym);
+        nums.push(currentToNumber);
     }
     let total = 0;
-    for (let i = 0; i < nums.length;i++) {
+    for (let i = 0; i < nums.length; i++){
         total += nums[i];
     }
     let avg = total / nums.length;
     return avg;
-
-
-
-
-
-
-/*
-    let numsArr = array.map(function(customer) {
-        return customer.balance.replace(/[$,]/g, '');
-    });
-    numsArr.forEach(function(numberStr) {
-        Number(numberStr);
-    });
-    let total = 0;
-    for (let i = 0; i < numsArr.length; i++) {
-        total += numsArr[i];
-    }
-    let avg = total / numsArr.length;
-        return avg;
-*/
 };
-
-//var balance = "// replace with regular exp" (/)
 
 
 
@@ -180,10 +155,18 @@ var topThreeTags = function(array) {
     // tags object to array
     let newNumArr = Object.entries(tagNum);
     // sort array in descending order
-    let newNumArrSort;
+    let newNumArrSort = newNumArr.sort(function(a, b) {
+        return b[1] - a[1];
+    });
     // return first 3 in array
-    return newNumArrSort.slic(0, 3);
+    let sorted = newNumArrSort.slice(0, 3);
+    let topThree = [sorted[0][0], sorted[1][0], sorted[2][0]];
+    return topThree;
 };
+
+/*
+
+*/
 
 
 
