@@ -1,8 +1,10 @@
+
 function repeat(n, action) {
   for (let i = 0; i < n; i++) {
     action(i);
   }
 }
+
 
 function characterScript(code) {
   for (let script of SCRIPTS) {

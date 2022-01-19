@@ -30,6 +30,10 @@ var z = x + y;
 console.log(z); // prints => 5
 x++;
 console.log(x); // prints => 3
+var i = x * y;
+console.log(i); // prints => 6
+y--;
+console.log(y); // prints => 2
 
 // Comparison:
 // Comparison operators compare operands and return a value based on whether the comparison is true or false.
@@ -53,6 +57,9 @@ console.log(x !== y); // prints => true
 // Unary:
 // Unary operators are used with only one operand
 // these include: (!), (typeOf), (-)
+/* The bang operator (!) converts a value to its opposite boolean. It has an equivalent meaning to "not".
+The typeof operator returns a string indicating what kind of value an operant is.
+*/
 var x = 2;
 console.log(-x); // prints => -2
 console.log(typeof x) // prints => number
