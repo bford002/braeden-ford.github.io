@@ -20,20 +20,19 @@ variables or values within the function (function scope).
 the closure stays alive and data can continue to exists within these closures.
  */
 
-// Declaring a function (function expression):
-function(parameter1, parameter2) { // "function" is the keyword to declare a function
+// Function declaration:
+// Declaring a function called functionName using the keyword "function".
+function functionName(parameter1, parameter2) { // "function" is the keyword to declare a function
     // function body: the code to be executed goes here
 }
+functionName("value", 3); // This is a function call. "value" and 3 are arguments that will be inputed into the function. They are represented by the parameters in the function definiton.
 
-// Assigning a function to a variable
-let func = function(parameter1, parameter2) {
+// Function expression:
+// Assigning a function to a named variable.
+let func = function(parameter1, parameter2) { // (parameters go inide the parentheses); They represent arguments that will be inputed into the function.
 
 };
-
-// Declaring a named function
-function func(parameter1, parameter2) { // func is the function name
-
-}
+func("value", 3); // Function call with arguments ("value" and 3).
 
 // Function that does not take inputs (parameters) and does not output (return statement) anything
 function() {
